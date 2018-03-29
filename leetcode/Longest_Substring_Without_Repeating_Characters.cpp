@@ -23,27 +23,22 @@ Given "pwwkew", the answer is "wke", with the length of 3. Note that the answer 
 class Solution {
 public:
 	int lengthOfLongestSubstring(std::string s) {
-		std::unordered_map<char, size_t> curChars;
+		std::map<char, size_t> curChars;
 
 		size_t len = 0;
 
 		size_t pos = 0;
+		size_t posFrom = 0;
 		for (auto c : s) {
 			auto it = curChars.find(c);
 			if (it != curChars.end()) {
 				len = std::max(len, curChars.size());
 
-				size_t prevPos = it->second;
-				auto itStart = curChars.begin();
-				auto itEnd = curChars.end();
-				for (it = itStart; it != itEnd; ) {
-					if (it->second <= prevPos) {
-						curChars.erase(it++);
-					}
-					else {
-						++it;
-					}
-				}
+				size_t posTo = it->second;
+
+				for (size_t i = posFrom; i <= posTo; ++i)
+					curChars.erase(s[i]);
+				posFrom = posTo + 1;
 			};
 
 			curChars[c] = pos++;
