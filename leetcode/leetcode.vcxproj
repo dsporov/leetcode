@@ -145,6 +145,7 @@
     <ClCompile Include="addTwoNumbers.cpp" />
     <ClCompile Include="isPalindrome.cpp" />
     <ClCompile Include="leetcode.cpp" />
+    <ClCompile Include="Longest_Substring_Without_Repeating_Characters.cpp" />
     <ClCompile Include="LRUCache.cpp" />
     <ClCompile Include="twoSum.cpp" />
   </ItemGroup>
